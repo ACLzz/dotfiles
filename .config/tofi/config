@@ -1,0 +1,5 @@
+font = /usr/local/share/fonts/Inter.ttc
+num-results = 5
+hint-font = false
+ascii-input = true
+include = ./theme

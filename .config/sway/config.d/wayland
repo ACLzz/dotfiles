@@ -1,0 +1,2 @@
+# Config for pure wayland session
+xwayland disable

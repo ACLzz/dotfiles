@@ -1,0 +1,26 @@
+# Regular input
+input "type:touchpad" {
+        natural_scroll disabled
+        dwt disabled
+        tap enabled
+}
+
+input type:keyboard {
+        xkb_layout "us,ua"
+        xkb_options grp:caps_toggle
+	repeat_rate 25
+	repeat_delay 350
+}
+
+# Sunshine virtual mouses
+input "48879:57005:Mouse_passthrough_(absolute)" {
+	drag enable
+	drag_lock enable
+	map_to_region 0 0 1920 1080
+}
+
+input "48879:57006:Mouse_passthrough_(absolute)" {
+	drag enable
+	drag_lock enable
+	map_to_region 1920 0 3840 1080
+}

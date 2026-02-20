@@ -1,0 +1,28 @@
+sort=-time
+default-timeout=7000
+ignore-timeout=0
+layer=overlay
+width=300
+height=96
+border-size=2
+border-radius=3
+font=MinecraftDefault 14
+max-icon-size=48
+icons=1
+outer-margin=2,2,2,2
+margin=10
+
+# Dracula Theme
+background-color=#282a36
+text-color=#f8f8f2
+border-color=#282a36
+
+[urgency=low]
+border-color=#282a36
+
+[urgency=normal]
+border-color=#44475a
+
+[urgency=high]
+border-color=#ff5555
+

@@ -1,0 +1,16 @@
+# Sway variables, not env
+
+# Mod
+set $mod Mod4
+
+# Home row direction keys
+set $left j
+set $down k
+set $up i
+set $right l
+
+# Terminal
+set $term alacritty msg create-window
+
+# Application Launcher
+set $menu tofi-run | xargs swaymsg exec --

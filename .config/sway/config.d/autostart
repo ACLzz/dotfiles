@@ -1,0 +1,5 @@
+exec alacritty --daemon
+exec mako -c ~/.config/mako/config
+exec gammastep -c ~/.config/gammastep/config.ini
+exec swaymsg create_output && swaymsg output HEADLESS-1 disable
+exec ~/.config/xdg-desktop-portal-wlr/start.sh && dbus-update-activation-environment --all

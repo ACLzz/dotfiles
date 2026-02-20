@@ -1,0 +1,16 @@
+[Unit]
+Description=Starts sunshine server
+
+[Service]
+Type=simple
+ExecStart=%h/.config/sunshine%i/start.sh
+StandardOutput=journal
+Restart=on-failure
+KillSignal=SIGTERM
+TimeoutStopSec=30
+SendSIGKILL=no
+Environment="MOUSE_PRODUCT_ID_ADDEND=%i"
+
+[Install]
+WantedBy=default.target
+

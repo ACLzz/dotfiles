@@ -1,0 +1,5 @@
+#!/bin/bash
+PICKED=$(cat ~/.config/tofi/emojies | tofi -c ~/.config/tofi/config --output `swaymsg -t get_outputs| jq -r '.[] | select(.focused ).name'` --prompt-text="Emoji" --require-match=true --font="" --fuzzy-match=true --hide-input=true)
+
+IFS='(' read -ra EMOJI <<< "$PICKED"
+echo ${EMOJI[1]::-2} | wl-copy

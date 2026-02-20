@@ -1,0 +1,9 @@
+include ~/.config/sway/config.d/vars
+include ~/.config/sway/config.d/displays
+include ~/.config/sway/config.d/input
+include ~/.config/sway/config.d/keybindings
+include ~/.config/sway/config.d/rice
+include ~/.config/sway/config.d/windows
+include ~/.config/sway/config.d/env
+include ~/.config/sway/config.d/autostart
+
