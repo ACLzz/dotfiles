@@ -67,6 +67,7 @@ mode "resize" {
 
 # Sway functions
 bindsym $mod+Shift+c reload
+bindsym $mod+o exec swaymsg input "type:keyboard" xkb_layout de
 
 # Media control
 set $players "spotify,firefox"
