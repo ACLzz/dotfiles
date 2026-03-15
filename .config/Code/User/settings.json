@@ -1,0 +1,15 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.insertFinalNewline": true,
+    "extensions.ignoreRecommendations": true,
+    "workbench.colorTheme": "IntelliJ IDEA New UI Dark",
+    "workbench.iconTheme": "vscode-jetbrains-icon-theme-2023-auto",
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.inlayHints.fontFamily": "Jetbrains Mono",
+    "notebook.markup.fontFamily": "Inter",
+  "notebook.output.fontFamily": "Inter",
+    "editor.fontLigatures": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    "workbench.activityBar.location": "hidden"
+}

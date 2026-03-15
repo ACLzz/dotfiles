@@ -1,5 +1,9 @@
 # Dotfiles
 
+## TODO:
+- Migrate to taskfile
+- Create a proper fork of PixelSpace and make wallpaper generator out of it
+
 ## Required software
 ```
 alacritty
