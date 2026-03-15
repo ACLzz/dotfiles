@@ -3,6 +3,7 @@
 ## TODO:
 - Migrate to taskfile
 - Create a proper fork of PixelSpace and make wallpaper generator out of it
+- Install addons for vscodium
 
 ## Required software
 ```

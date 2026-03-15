@@ -1,7 +1,7 @@
 [window]
 padding = {x = 2, y = 2}
 [font]
-normal = { family = "Miracode", style = "Regular" }
-bold = { family = "Miracode", style = "Bold" }
-italic = { family = "Miracode", style = "Italic" }
-bold_italic = { family = "Miracode", style = "Bold Italic" }
+normal = { family = "JetBrainsMono", style = "Regular" }
+bold = { family = "JetBrainsMono", style = "Bold" }
+italic = { family = "JetBrainsMono", style = "Italic" }
+bold_italic = { family = "JetBrainsMono", style = "Bold Italic" }
