@@ -30,4 +30,4 @@ output eDP-1 bg '~/Pictures/bg_small.png' fill
 output HDMI-A-1 bg '~/Pictures/bg_big.png' fill
 output HEADLESS-1 bg '~/Pictures/bg_headless.png' fill
 
-exec rotate_bg --stars true --dust true --planets true --darken true --theme 7
+exec ~/.local/bin/rotate_bg --stars true --dust true --planets true --darken true --theme 7

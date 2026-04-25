@@ -6,4 +6,5 @@ include ~/.config/sway/config.d/rice
 include ~/.config/sway/config.d/windows
 include ~/.config/sway/config.d/env
 include ~/.config/sway/config.d/autostart
+include ~/.config/sway/config.d/apps
 

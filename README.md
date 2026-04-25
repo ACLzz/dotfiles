@@ -5,7 +5,7 @@
 - Create a proper fork of PixelSpace and make wallpaper generator out of it
 - Install addons for vscodium
 
-## Required software
+## Software list
 ```
 alacritty
 gammastep
@@ -17,10 +17,7 @@ xdg-desktop-portal-wlr
 slurp
 wl-clipboard
 zsh
-```
-
-## Additional software
-```
+zoxide
 sunshine
 bibata-xcursors
 ```

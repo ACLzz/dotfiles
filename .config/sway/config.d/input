@@ -3,6 +3,7 @@ input "type:touchpad" {
         natural_scroll disabled
         dwt disabled
         tap enabled
+	drag_lock disabled
 }
 
 input type:keyboard {

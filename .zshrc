@@ -1,7 +1,8 @@
 # path
 export GOPATH="$HOME/go/bin"
+export DART_PATH="$HOME/dart/flutter/bin"
 export LOCAL_PATH="$HOME/.local/bin"
-export PATH="$PATH:$GOPATH:$LOCAL_PATH"
+export PATH="$PATH:$GOPATH:$LOCAL_PATH:$DART_PATH"
 
 # oh my zsh
 ZSH_THEME="crunch"
@@ -19,6 +20,9 @@ export LANG="en_US.UTF-8"
 export EDITOR="vim"
 
 # auto scripts on shell startup
+# zoxide
+eval "$(zoxide init zsh)"
+
 ## update system reminder
 if [[ `date | awk '{print $1}'` == 'Sat' ]]; then
 	cowsay -f satanic 'You need to update your system today'
@@ -28,7 +32,7 @@ fi
 alias shutdown="sudo shutdown"
 alias reboot="sudo reboot"
 alias oculante="setsid oculante $@"
-alias mount="sudo mount"
+alias mount="sudo mount -o uid=1000,gid=1000"
 alias umount="sudo umount"
 
 # keybindings cause I hate default ones

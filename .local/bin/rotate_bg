@@ -1,0 +1,13 @@
+#!/bin/bash
+rm -f ~/Pictures/Space*
+ARGS=$@
+
+rotate_bg() {
+	~/.local/bin/space_backgrounds --display-driver wayland -s ~/.local/libexec/space_backgrounds.gd --width $1 --height $2 $ARGS ${@:4} 
+	mv ~/Pictures/Space* ~/Pictures/$3.png
+}
+
+rotate_bg 2560 1440 bg_big 
+rotate_bg 1920 1080 bg_small 
+rotate_bg 1920 1080 bg_headless --theme 13 
+swaymsg reload
