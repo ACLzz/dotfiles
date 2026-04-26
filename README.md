@@ -1,11 +1,12 @@
 # Dotfiles
 
-## TODO:
+## TODO
+
 - Migrate to taskfile
-- Create a proper fork of PixelSpace and make wallpaper generator out of it
 - Install addons for vscodium
 
 ## Software list
+
 ```
 alacritty
 gammastep
@@ -20,4 +21,5 @@ zsh
 zoxide
 sunshine
 bibata-xcursors
+stow
 ```

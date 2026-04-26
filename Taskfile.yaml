@@ -1,0 +1,71 @@
+version: '3'
+
+tasks:
+  update:
+    desc: Fetches latest version from git adopting local changes
+    cmds:
+      - git stash
+      - git fetch
+      - git pull
+      - git stash pop
+      - task: install
+
+  install:
+    silent: true
+    desc: Installs dotfiles and related userspace software
+    cmds:
+      - task: _install:oh-my-zsh
+      - task: _install:zsh-autosuggestions
+      - task: _install:space_backgrounds
+      - stow .
+      - task: _chsh
+
+  install:ubuntu:
+    desc: Installs global software for ubuntu distributive. Must be run as superuser
+    preconditions:
+      - test `whoami` = "root"
+    cmds:
+      - apt update
+      - |
+        apt install -y \
+          alacritty gammastep sway mako-notifier tofi wireplumber xdg-desktop-portal-wlr slurp \
+          wl-clipboard zsh zoxide bibata-cursor-theme
+
+  install:ubuntu:extra:
+    desc: Installs extra global software for ubuntu distributive. Must be run as
+      superuser
+    preconditions:
+      - test `whoami` = "root"
+    cmds:
+      - apt update
+      - apt install -y sunshine
+
+  _chsh:
+    cmds:
+      - echo "Don't be scared, just changing your sh to zsh :)"
+      - chsh `whoami` -s /bin/zsh
+    status:
+      - test $SHELL = "/bin/zsh"
+
+  _install:oh-my-zsh:
+    cmd: sh -c "$(curl -fsSL
+      https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    status:
+      - test -d ~/.oh-my-zsh
+
+  _install:zsh-autosuggestions:
+    vars:
+      TARGET_DIR: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    cmd: git clone https://github.com/zsh-users/zsh-autosuggestions {{.TARGET_DIR}}
+    status:
+      - test -d {{.TARGET_DIR}}
+
+  _install:space_backgrounds:
+    vars:
+      TARGET_FILE: ~/.local/bin/space_backgrounds
+    cmds:
+      - wget -0 {{.TARGET_FILE}}
+        https://github.com/Muneeb1195/PixelSpace/releases/download/v0.1.0-rc/SpaceBackground-linux.x86_64
+      - chmod +x {{.TARGET_FILE}}
+    status:
+      - test -f {{.TARGET_FILE}}
