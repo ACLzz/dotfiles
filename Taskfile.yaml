@@ -1,7 +1,10 @@
 version: '3'
 
 tasks:
+  default:
+    - task: update
   update:
+    silent: true
     desc: Fetches latest version from git adopting local changes
     cmds:
       - git stash
@@ -17,11 +20,12 @@ tasks:
       - task: _install:oh-my-zsh
       - task: _install:zsh-autosuggestions
       - task: _install:space_backgrounds
-      - stow .
+      - task: _stow
       - task: _chsh
 
-  install:ubuntu:
-    desc: Installs global software for ubuntu distributive. Must be run as superuser
+  install:apt:
+    desc: Installs global software for apt-based distributives. Must be run as
+      superuser
     preconditions:
       - test `whoami` = "root"
     cmds:
@@ -29,10 +33,10 @@ tasks:
       - |
         apt install -y \
           alacritty gammastep sway mako-notifier tofi wireplumber xdg-desktop-portal-wlr slurp \
-          wl-clipboard zsh zoxide bibata-cursor-theme
+          wl-clipboard zsh zoxide bibata-cursor-theme stow cowsay wget vim coreutils
 
-  install:ubuntu:extra:
-    desc: Installs extra global software for ubuntu distributive. Must be run as
+  install:apt:extra:
+    desc: Installs extra global software for apt-based distributives. Must be run as
       superuser
     preconditions:
       - test `whoami` = "root"
@@ -41,19 +45,23 @@ tasks:
       - apt install -y sunshine
 
   _chsh:
+    silent: true
     cmds:
       - echo "Don't be scared, just changing your sh to zsh :)"
       - chsh `whoami` -s /bin/zsh
     status:
-      - test $SHELL = "/bin/zsh"
+      - echo $SHELL | grep zsh
 
   _install:oh-my-zsh:
-    cmd: sh -c "$(curl -fsSL
+    silent: true
+    cmd: sh -c "$(wget -O-
       https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      "" --unattended --keep-zshrc
     status:
       - test -d ~/.oh-my-zsh
 
   _install:zsh-autosuggestions:
+    silent: true
     vars:
       TARGET_DIR: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
     cmd: git clone https://github.com/zsh-users/zsh-autosuggestions {{.TARGET_DIR}}
@@ -61,11 +69,34 @@ tasks:
       - test -d {{.TARGET_DIR}}
 
   _install:space_backgrounds:
+    silent: true
     vars:
-      TARGET_FILE: ~/.local/bin/space_backgrounds
+      TARGET_DIR: ~/.local/bin
+      TARGET_FILE: "{{.TARGET_DIR}}/space_backgrounds"
     cmds:
-      - wget -0 {{.TARGET_FILE}}
+      - mkdir -p {{.TARGET_DIR}}
+      - wget -O {{.TARGET_FILE}}
         https://github.com/Muneeb1195/PixelSpace/releases/download/v0.1.0-rc/SpaceBackground-linux.x86_64
       - chmod +x {{.TARGET_FILE}}
     status:
       - test -f {{.TARGET_FILE}}
+
+  _stow:
+    silent: true
+    deps:
+      - task: _stow:backup_conflicts
+    cmd: stow .
+
+  _stow:backup_conflicts:
+    silent: false
+    vars:
+      CONFLICTS:
+        sh: stow --simulate . 2>&1 | grep "cannot stow" | awk '{print $4}' | sed -E
+          's/^[[:space:][:alnum:]_]*\//\.\.\//gm' | tr '\n' ' '
+    cmd: |
+      for f in {{.CONFLICTS}}; do
+        echo "$f file in conflict with dotfiles will be backed up"
+        mv "$f" "$f.bak"
+      done
+    status:
+      - test "{{.CONFLICTS}}" = ""

@@ -1,13 +1,21 @@
 # Dotfiles
 
+`git clone https://github.com/ACLzz/dotfiles.git ~/.dotfiles; cd ~/.dotfiles`
+
 ## TODO
 
-- Migrate to taskfile
 - Install addons for vscodium
+- Install plugins for neovim
+- Install neovim
+- Install lazyvim
+- Install firefox extensions && config
+- Apply vimium config to firefox
+- Add kernel configs
+- Add dotfiles for root
 
 ## Software list
 
-```
+```txt
 alacritty
 gammastep
 sway
@@ -22,4 +30,6 @@ zoxide
 sunshine
 bibata-xcursors
 stow
+cowsay
+wget
 ```
