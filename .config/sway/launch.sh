@@ -1,4 +1,5 @@
 #!/bin/bash
+export WLR_RENDERER=vulkan
 export CFG_PATH=/tmp/sway_config
 cat ~/.config/sway/config > $CFG_PATH
 

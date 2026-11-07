@@ -8,10 +8,11 @@ input "type:touchpad" {
 
 input type:keyboard {
         xkb_layout "us,ua"
-        xkb_options grp:caps_toggle
+	xkb_options caps:swapescape
 	repeat_rate 25
 	repeat_delay 350
 }
+bindsym Caps_Lock input type:keyboard xkb_switch_layout next
 
 # Sunshine virtual mouses
 input "48879:57005:Mouse_passthrough_(absolute)" {

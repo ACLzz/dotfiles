@@ -1,0 +1,108 @@
+# This is your rocks.nvim plugins declaration file.
+# Here is a small yet pretty detailed example on how to use it:
+#
+# [plugins]
+# nvim-treesitter = "semver_version"  # e.g. "1.0.0"
+
+# List of non-Neovim rocks.
+# This includes things like `toml` or other lua packages.
+[rocks]
+
+# List of Neovim plugins to install alongside their versions.
+# If the plugin name contains a dot then you must add quotes to the key name!
+[plugins]
+"rocks.nvim" = "2.49.1"
+"rocks-git.nvim" = "2.6.0"
+nvim-lspconfig = "2.12.0"
+"fidget.nvim" = "1.6.0"
+neorg = "9.6.4"
+
+[plugins.coq]
+git = "ms-jpq/coq_nvim"
+rev = "83580b587f6fc50568ec61ae79e18762fcf35c17"
+branch = "coq"
+
+[plugins.chad]
+git = "ms-jpq/chadtree"
+rev = "6c37557462f9a8b51d0fc873c63863672a45cf5a"
+branch = "chad"
+build = "python3 -m chadtree deps"
+
+[plugins.buffer-sticks]
+git = "ahkohd/buffer-sticks.nvim"
+rev = "aa15783b2b997d43bd6046ec96a614dfcc78afa7"
+
+[plugins.nvimlaunch]
+git = "hadishahpuri/nvimlaunch"
+rev = "582c5d011238ea99ff61c2e3d7b8ae686aa5822d"
+
+[plugins.vim-slint]
+git = "slint-ui/vim-slint"
+rev = "9badce3860297562bb5e80ba1666628f9e0ac632"
+
+[plugins."crates.nvim"]
+git = "saecki/crates.nvim"
+rev = "v0.7.1"
+
+[plugins."mini.comment"]
+git = "echasnovski/mini.comment"
+rev = "4677392f091e8b5c18d4b535130220a6d1da4aca"
+branch = "stable"
+
+[plugins."mini.pairs"]
+git = "echasnovski/mini.pairs"
+rev = "4a014143fcb4e9df26198ccb3ecff3b9e77a048c"
+branch = "stable"
+
+[plugins."blink.lib"]
+git = "saghen/blink.lib"
+rev = "5876dd95deeb70aadbe9f1c0b7117a135061cdac"
+
+[plugins."blink.cmp"]
+git = "saghen/blink.cmp"
+rev = "v1.10.2"
+
+[plugins.nvim-treesitter-context]
+git = "nvim-treesitter/nvim-treesitter-context"
+rev = "v1.0.0"
+
+[plugins.nvim-web-devicons]
+git = "nvim-tree/nvim-web-devicons"
+rev = "v0.100"
+
+[plugins.fzf-lua]
+git = "ibhagwan/fzf-lua"
+rev = "0.7"
+
+[plugins.vim-polyglot]
+git = "sheerun/vim-polyglot"
+rev = "v4.17.1"
+
+[plugins.nvim-treesitter]
+git = "nvim-treesitter/nvim-treesitter"
+rev = "v0.10.0"
+build = ":TSUpdate"
+
+[plugins.everforest]
+git = "sainnhe/everforest"
+rev = "v0.3.0"
+
+[plugins."smart-backspace.nvim"]
+git = "qwavies/smart-backspace.nvim"
+rev = "06121e57027ae4a6a444817d005ce1b475004ccd"
+
+[plugins.nvim-surround]
+git = "kylechui/nvim-surround"
+rev = "v4.0.5"
+
+[plugins."lualine.nvim"]
+git = "nvim-lualine/lualine.nvim"
+rev = "221ce6b2d999187044529f49da6554a92f740a96"
+
+[plugins.promise-async]
+git = "kevinhwang91/promise-async"
+rev = "v1.0.0"
+
+[plugins.nvim-ufo]
+git = "kevinhwang91/nvim-ufo"
+rev = "v1.5.0"

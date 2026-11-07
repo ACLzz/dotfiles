@@ -1,8 +1,9 @@
 # path
 export GOPATH="$HOME/go/bin"
-export DART_PATH="$HOME/dart/flutter/bin"
+export RUSTPATH="/$HOME/.cargo/bin"
+export DART_PATH="$HOME/dart/flutter/bin:$HOME/.pub-cache/bin"
 export LOCAL_PATH="$HOME/.local/bin"
-export PATH="$PATH:$GOPATH:$LOCAL_PATH:$DART_PATH"
+export PATH="$PATH:$GOPATH:$LOCAL_PATH:$DART_PATH:$RUSTPATH"
 
 # oh my zsh
 ZSH_THEME="crunch"
