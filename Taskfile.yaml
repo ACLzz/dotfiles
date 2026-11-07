@@ -91,8 +91,9 @@ tasks:
     silent: false
     vars:
       CONFLICTS:
-        sh: stow --simulate . 2>&1 | grep "cannot stow" | awk '{print $4}' | sed -E
-          's/^[[:space:][:alnum:]_]*\//\.\.\//gm' | tr '\n' ' '
+        sh: stow --simulate . 2>&1 | grep "cannot stow" |  sed -E 's/.*existing target //g' | 
+          sed -E 's/ since neither.*//g' | sed -E 's/^[[:space:][:alnum:]_]*\//\.\.\//gm' | 
+          tr '\n' ' '
     cmd: |
       for f in {{.CONFLICTS}}; do
         echo "$f file in conflict with dotfiles will be backed up"
