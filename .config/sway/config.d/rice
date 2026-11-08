@@ -26,6 +26,6 @@ set $cursor_theme Bibata-Original-Ice
 set $cursor_size 24
 seat seat0 xcursor_theme $cursor_theme $cursor_size
 
-output eDP-1 bg '~/Pictures/bg_small.png' fill
+output eDP-1 bg '~/Pictures/bg_small.png' fill #000000
 
 exec ~/.local/bin/rotate_bg --stars true --dust true --planets true --darken true --theme 7

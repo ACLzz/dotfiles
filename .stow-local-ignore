@@ -2,4 +2,7 @@ Taskfile.yaml
 README.md
 .git
 .gitignore
+.config/sunshine0
+.config/sunshine1
 .config/sway/config.d/second_monitor
+.config/sway/config.d/vr

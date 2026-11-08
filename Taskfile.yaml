@@ -3,6 +3,7 @@ version: '3'
 tasks:
   default:
     - task: update
+
   update:
     silent: true
     desc: Fetches latest version from git adopting local changes
@@ -11,7 +12,13 @@ tasks:
       - git fetch
       - git pull
       - git stash pop
-      - task: install
+      - task: stow
+
+  stow:
+    desc: Stow local files
+    deps:
+      - task: _stow:backup_conflicts
+    cmd: stow .
 
   install:
     silent: true
@@ -20,7 +27,7 @@ tasks:
       - task: _install:oh-my-zsh
       - task: _install:zsh-autosuggestions
       - task: _install:space_backgrounds
-      - task: _stow
+      - task: stow
       - task: _chsh
 
   install:apt:
@@ -33,7 +40,7 @@ tasks:
       - |
         apt install -y \
           alacritty gammastep sway mako-notifier tofi wireplumber xdg-desktop-portal-wlr slurp \
-          wl-clipboard zsh zoxide bibata-cursor-theme stow cowsay wget vim coreutils
+          wl-clipboard zsh zoxide bibata-cursor-theme stow cowsay wget vim coreutils fonts-jetbrains-mono
 
   install:apt:extra:
     desc: Installs extra global software for apt-based distributives. Must be run as
@@ -49,20 +56,46 @@ tasks:
     vars:
       SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
     cmds:
-      - sed '/.*second_monitor/D' .stow-local-ignore > .stow-local-ignore
-      - echo "include ~/$SECOND_MONITOR_CONFIG_PATH" >> .config/sway/config
-    #status:
-    #  - test -z `cat .stow-local-ignore | grep $SECOND_MONITOR_CONFIG_PATH`
+      - sed '/.*second_monitor/D' .stow-local-ignore > .stow-local-ignore.new
+      - echo "include ~/{{.SECOND_MONITOR_CONFIG_PATH}}" >> .config/sway/config
+      - mv .stow-local-ignore.new .stow-local-ignore
+    status:
+     - test -z `cat .stow-local-ignore | grep {{.SECOND_MONITOR_CONFIG_PATH}}`
 
   extra:second_monitor:remove:
     desc: Disables support for second monitor
     vars:
       SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
     cmds:
-      - sed '/.*second_monitor/D' .config/sway/config > .config/sway/config
-      - echo $SECOND_MONITOR_CONFIG_PATH >> .stow-local-ignore
+      - sed '/.*second_monitor/D' .config/sway/config > .config/sway/config.new
+      - echo {{.SECOND_MONITOR_CONFIG_PATH}} >> .stow-local-ignore
+      - mv .config/sway/config.new .config/sway/config
     status:
-      - cat .stow-local-ignore | grep $SECOND_MONITOR_CONFIG_PATH | test 
+      - test `cat .stow-local-ignore | grep {{.SECOND_MONITOR_CONFIG_PATH}}`
+
+  extra:vr:add:
+    desc: Enables headless monitor setup for VR headset
+    vars:
+      VR_CONFIG_PATH: .config/sway/config.d/vr
+    cmds:
+      - sed '/.*\/vr/D' .stow-local-ignore | sed -E '/.*sunshine/D' > .stow-local-ignore.new
+      - echo "include ~/{{.VR_CONFIG_PATH}}" >> .config/sway/config
+      - mv .stow-local-ignore.new .stow-local-ignore
+    status:
+     - test -z `cat .stow-local-ignore | grep {{.VR_CONFIG_PATH}}`
+
+  extra:vr:remove:
+    desc: Disables headless monitor setup for VR headset
+    vars:
+      VR_CONFIG_PATH: .config/sway/config.d/vr
+    cmds:
+      - sed '/.*\/vr/D' .config/sway/config > .config/sway/config.new
+      - echo {{.VR_CONFIG_PATH}} >> .stow-local-ignore
+      - echo .config/sunshine0 >> .stow-local-ignore
+      - echo .config/sunshine1 >> .stow-local-ignore
+      - mv .config/sway/config.new .config/sway/config
+    status:
+      - test `cat .stow-local-ignore | grep {{.VR_CONFIG_PATH}}`
 
   _chsh:
     silent: true
@@ -96,16 +129,11 @@ tasks:
     cmds:
       - mkdir -p {{.TARGET_DIR}}
       - wget -O {{.TARGET_FILE}}
+        -U "Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0"
         https://github.com/Muneeb1195/PixelSpace/releases/download/v0.1.0-rc/SpaceBackground-linux.x86_64
       - chmod +x {{.TARGET_FILE}}
     status:
       - test -f {{.TARGET_FILE}}
-
-  _stow:
-    silent: true
-    deps:
-      - task: _stow:backup_conflicts
-    cmd: stow .
 
   _stow:backup_conflicts:
     silent: false
