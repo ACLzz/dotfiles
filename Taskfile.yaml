@@ -48,7 +48,7 @@ tasks:
         apt install -y \
           alacritty gammastep sway mako-notifier tofi wireplumber xdg-desktop-portal-wlr slurp \
           wl-clipboard zsh zoxide bibata-cursor-theme stow cowsay wget vim coreutils fonts-jetbrains-mono \
-          neovim
+          neovim make lua5.1 liblua5.1-dev unzip python3-venv 
 
   install:apt:extra:
     desc: Installs extra global software for apt-based distributives. Must be run as

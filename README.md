@@ -37,11 +37,24 @@ slurp
 wl-clipboard
 zsh
 zoxide
-sunshine
 bibata-xcursors
 stow
 cowsay
-wget
 neovim
 jetbrains-mono
+lua
+python3-venv
+```
+
+Build dependencies:
+```text
+wget
+make
+liblua5.1-dev // lua.h for luarocks
+unzip
+```
+
+VR extra:
+```text
+sunshine
 ```
