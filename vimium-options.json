@@ -2,27 +2,11 @@
   "exclusionRules": [
     {
       "passKeys": "",
-      "pattern": "https?://mail.google.com/*"
-    },
-    {
-      "passKeys": "",
       "pattern": "https?://www.youtube.com/*"
     },
     {
       "passKeys": "",
       "pattern": "https?://vim-adventures.com/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://panchiragames.itch.io/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://machina-box.itch.io/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://astrokaen.itch.io/*"
     },
     {
       "passKeys": "",
@@ -34,15 +18,7 @@
     },
     {
       "passKeys": "",
-      "pattern": "https?://vnc.htb-cloud.com/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://192.168.88.1/*"
-    },
-    {
-      "passKeys": "",
-      "pattern": "https?://localhost:8080/*"
+      "pattern": "https?://192.168.*.1/*"
     }
   ],
   "grabBackFocus": true,
