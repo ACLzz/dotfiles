@@ -2,3 +2,4 @@ Taskfile.yaml
 README.md
 .git
 .gitignore
+.config/sway/config.d/second_monitor

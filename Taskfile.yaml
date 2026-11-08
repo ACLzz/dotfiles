@@ -44,6 +44,26 @@ tasks:
       - apt update
       - apt install -y sunshine
 
+  extra:second_monitor:add:
+    desc: Enables support for second monitor
+    vars:
+      SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
+    cmds:
+      - sed '/.*second_monitor/D' .stow-local-ignore > .stow-local-ignore
+      - echo "include ~/$SECOND_MONITOR_CONFIG_PATH" >> .config/sway/config
+    #status:
+    #  - test -z `cat .stow-local-ignore | grep $SECOND_MONITOR_CONFIG_PATH`
+
+  extra:second_monitor:remove:
+    desc: Disables support for second monitor
+    vars:
+      SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
+    cmds:
+      - sed '/.*second_monitor/D' .config/sway/config > .config/sway/config
+      - echo $SECOND_MONITOR_CONFIG_PATH >> .stow-local-ignore
+    status:
+      - cat .stow-local-ignore | grep $SECOND_MONITOR_CONFIG_PATH | test 
+
   _chsh:
     silent: true
     cmds:
