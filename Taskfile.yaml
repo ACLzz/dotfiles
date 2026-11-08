@@ -57,7 +57,8 @@ tasks:
       - test `whoami` = "root"
     cmds:
       - apt update
-      - apt install -y sunshine
+      - apt-cache policy fastfetch
+      - apt install -y sunshine fastfetch
 
   extra:second_monitor:add:
     desc: Enables support for second monitor

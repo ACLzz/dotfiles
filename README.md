@@ -1,5 +1,7 @@
 # Dotfiles
 
+![example screenshot](./resources/preview.png)
+
 `git clone https://github.com/ACLzz/dotfiles.git ~/.dotfiles; cd ~/.dotfiles`
 
 ## How to use
@@ -57,4 +59,9 @@ unzip
 VR extra:
 ```text
 sunshine
+```
+
+Other extra:
+```text
+fastfetch
 ```
