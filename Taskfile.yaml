@@ -1,5 +1,12 @@
 version: '3'
 
+vars:
+  SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
+  SECOND_MONITOR_FEATURE_MARKER: '.*second_monitor'
+  VR_CONFIG_PATH: .config/sway/config.d/vr
+  VR_FEATURE_MARKER: '.*\/vr'
+  SUNSHINE_FEATURE_MARKER: '.*sunshine'
+
 tasks:
   default:
     - task: update
@@ -40,7 +47,8 @@ tasks:
       - |
         apt install -y \
           alacritty gammastep sway mako-notifier tofi wireplumber xdg-desktop-portal-wlr slurp \
-          wl-clipboard zsh zoxide bibata-cursor-theme stow cowsay wget vim coreutils fonts-jetbrains-mono
+          wl-clipboard zsh zoxide bibata-cursor-theme stow cowsay wget vim coreutils fonts-jetbrains-mono \
+          neovim
 
   install:apt:extra:
     desc: Installs extra global software for apt-based distributives. Must be run as
@@ -53,10 +61,8 @@ tasks:
 
   extra:second_monitor:add:
     desc: Enables support for second monitor
-    vars:
-      SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
     cmds:
-      - sed '/.*second_monitor/D' .stow-local-ignore > .stow-local-ignore.new
+      - sed '/{{.SECOND_MONITOR_FEATURE_MARKER}}/D' .stow-local-ignore > .stow-local-ignore.new
       - echo "include ~/{{.SECOND_MONITOR_CONFIG_PATH}}" >> .config/sway/config
       - mv .stow-local-ignore.new .stow-local-ignore
     status:
@@ -64,10 +70,8 @@ tasks:
 
   extra:second_monitor:remove:
     desc: Disables support for second monitor
-    vars:
-      SECOND_MONITOR_CONFIG_PATH: .config/sway/config.d/second_monitor
     cmds:
-      - sed '/.*second_monitor/D' .config/sway/config > .config/sway/config.new
+      - sed '/{{.SECOND_MONITOR_FEATURE_MARKER}}/D' .config/sway/config > .config/sway/config.new
       - echo {{.SECOND_MONITOR_CONFIG_PATH}} >> .stow-local-ignore
       - mv .config/sway/config.new .config/sway/config
     status:
@@ -75,10 +79,8 @@ tasks:
 
   extra:vr:add:
     desc: Enables headless monitor setup for VR headset
-    vars:
-      VR_CONFIG_PATH: .config/sway/config.d/vr
     cmds:
-      - sed '/.*\/vr/D' .stow-local-ignore | sed -E '/.*sunshine/D' > .stow-local-ignore.new
+      - sed '/{{.VR_FEATURE_MARKER}}/D' .stow-local-ignore | sed -E '/{{.SUNSHINE_FEATURE_MARKER}}/D' > .stow-local-ignore.new
       - echo "include ~/{{.VR_CONFIG_PATH}}" >> .config/sway/config
       - mv .stow-local-ignore.new .stow-local-ignore
     status:
@@ -86,10 +88,8 @@ tasks:
 
   extra:vr:remove:
     desc: Disables headless monitor setup for VR headset
-    vars:
-      VR_CONFIG_PATH: .config/sway/config.d/vr
     cmds:
-      - sed '/.*\/vr/D' .config/sway/config > .config/sway/config.new
+      - sed '/{{.VR_FEATURE_MARKER}}/D' .config/sway/config > .config/sway/config.new
       - echo {{.VR_CONFIG_PATH}} >> .stow-local-ignore
       - echo .config/sunshine0 >> .stow-local-ignore
       - echo .config/sunshine1 >> .stow-local-ignore

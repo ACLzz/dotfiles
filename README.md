@@ -3,21 +3,25 @@
 `git clone https://github.com/ACLzz/dotfiles.git ~/.dotfiles; cd ~/.dotfiles`
 
 ## How to use
-If used on ubuntu:
+If used on Ubuntu:
 - Login into root, and run `task install:apt`
 - Optional: run `task install:apt:extra`
 
+If used on Gentoo:
+Install software from software list manually (all of them are in portage)
+
 General steps:
 - Run `task install` to install local user software
-- Run `task` to stow dotfiles
+- Run `task stow` to stow dotfiles
+
+
+You can run `task update` to fetch new dotfiles version while preserving your local config
 
 ## TODO
-
-- Install neovim
-- Install firefox extensions && config
-- Apply vimium config to firefox
+(Waiting for new laptop)
+- Install librewolf extensions && config
+- Apply vimium config to librewolf
 - Add kernel configs
-- Add dotfiles for root
 
 ## Software list
 
@@ -38,4 +42,5 @@ bibata-xcursors
 stow
 cowsay
 wget
+neovim
 ```
