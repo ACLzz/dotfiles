@@ -145,7 +145,7 @@ tasks:
     cmd: |
       for f in {{.CONFLICTS}}; do
         echo "$f file in conflict with dotfiles will be backed up"
-        mv "$f" "$f.bak"
+        mv "../$f" "../$f.bak"
       done
     status:
       - test "{{.CONFLICTS}}" = ""

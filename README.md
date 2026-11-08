@@ -43,4 +43,5 @@ stow
 cowsay
 wget
 neovim
+jetbrains-mono
 ```
