@@ -1,0 +1,9 @@
+output HEADLESS-1 {
+	resolution 1920x1080@60hz
+	position 1280,-1080
+	disable
+}
+
+output HEADLESS-1 bg '~/Pictures/bg_headless.png' fill
+
+exec swaymsg create_output && swaymsg output HEADLESS-1 disable

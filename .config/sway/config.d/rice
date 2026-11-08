@@ -27,7 +27,5 @@ set $cursor_size 24
 seat seat0 xcursor_theme $cursor_theme $cursor_size
 
 output eDP-1 bg '~/Pictures/bg_small.png' fill
-output HDMI-A-1 bg '~/Pictures/bg_big.png' fill
-output HEADLESS-1 bg '~/Pictures/bg_headless.png' fill
 
 exec ~/.local/bin/rotate_bg --stars true --dust true --planets true --darken true --theme 7
