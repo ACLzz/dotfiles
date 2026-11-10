@@ -16,6 +16,7 @@
 nvim-lspconfig = "2.12.0"
 "fidget.nvim" = "1.6.0"
 neorg = "9.6.4"
+rustaceanvim = "9.2.2"
 
 [plugins.coq]
 git = "ms-jpq/coq_nvim"

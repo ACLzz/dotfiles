@@ -9,16 +9,6 @@
 --    },
 --}
 
--- rust
-vim.lsp.config("rust_analyzer", {
-	--	capabilities = capabilities,
-})
--- vim.lsp.enable("rust_analyzer")
-
--- slint
-vim.lsp.config("slint_lsp", {})
-vim.lsp.enable("slint_lsp")
-
 -- go
 vim.lsp.config("gopls", {})
 vim.lsp.enable("gopls")
@@ -77,7 +67,7 @@ capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true
 }
 
-local language_servers = { 'rust_analyzer', 'slint_lsp', 'gopls', 'lua_ls' }
+local language_servers = { 'gopls', 'lua_ls' }
 for _, ls in ipairs(language_servers) do
 	vim.lsp.config[ls].capabilities = capabilities
 end
