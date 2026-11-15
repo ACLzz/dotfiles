@@ -73,7 +73,8 @@ rev = "v0.100"
 
 [plugins.fzf-lua]
 git = "ibhagwan/fzf-lua"
-rev = "0.7"
+branch = "main"
+rev = "ded1c96d3d9d74634287d722431c26690968a4bf"
 
 [plugins.vim-polyglot]
 git = "sheerun/vim-polyglot"
