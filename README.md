@@ -27,44 +27,45 @@ You can run `task update` to fetch new dotfiles version while preserving your lo
 - Install librewolf extensions && config
 - Apply vimium config to librewolf
 - Add kernel configs
+- Make theme monochrome
 
 ## Software list
 
 ```txt
 alacritty
-gammastep
-sway
-mako
-tofi
-wireplumber
-xdg-desktop-portal-wlr
-slurp
-wl-clipboard
-zsh
-zoxide
 bibata-xcursors
-stow
 cowsay
-neovim
+gammastep
 jetbrains-mono
 lua
+mako
+neovim
+slurp
+stow
+sway
+tofi
+wireplumber
+wl-clipboard
+xdg-desktop-portal-wlr
+zoxide
+zsh
 ```
 
 Build dependencies:
 ```text
-wget
-make
 liblua5.1-dev // lua.h for luarocks
-unzip
+make
 python3-venv // for CHADTree to build
+unzip
+wget
 ```
 
-VR extra:
+VR extras:
 ```text
 sunshine
 ```
 
-Other extra:
+Other extras:
 ```text
 fastfetch
 sox
