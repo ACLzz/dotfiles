@@ -67,4 +67,5 @@ sunshine
 Other extra:
 ```text
 fastfetch
+sox
 ```

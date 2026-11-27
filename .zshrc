@@ -36,6 +36,21 @@ alias oculante="setsid oculante $@"
 alias mount="sudo mount -o uid=1000,gid=1000"
 alias umount="sudo umount"
 
+# unnecessary helpers :)
+_REMINDER_FILEPATH="~/Music/reminder.ogg"
+timer() {
+ (sleep $1; play -q $_REMINDER_FILEPATH) &
+}
+
+alarm() {
+ SECS=$(expr `date -d "today $1" +%s` - `date -d "now" +%s`)
+ if [[ $SECS < 0 ]]; then
+  SECS=$(expr `date -d "tomorrow $1" +%s` - `date -d "now" +%s`)
+ fi
+ (sleep $SECS; play -q $_REMINDER_FILEPATH) &
+}
+
+
 # keybindings cause I hate default ones
 bindkey '^H' backward-kill-word
 

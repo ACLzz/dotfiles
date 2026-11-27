@@ -34,6 +34,7 @@ tasks:
       - task: _install:oh-my-zsh
       - task: _install:zsh-autosuggestions
       - task: _install:space_backgrounds
+      - task: _install:reminder_ringtone
       - task: stow
       - task: _chsh
 
@@ -58,7 +59,7 @@ tasks:
     cmds:
       - apt update
       - apt-cache policy fastfetch
-      - apt install -y sunshine fastfetch
+      - apt install -y sunshine fastfetch sox
 
   extra:second_monitor:add:
     desc: Enables support for second monitor
@@ -135,6 +136,13 @@ tasks:
       - chmod +x {{.TARGET_FILE}}
     status:
       - test -f {{.TARGET_FILE}}
+
+
+  _install:reminder_ringtone:
+    silent: true
+    vars:
+      RINGTONE_FILE: Cygnus.ogg 
+    cmd: wget https://github.com/Aleks-Levet/Android-stock-sounds-library/raw/refs/heads/main/ringtones/{{.RINGTONE_FILE}} -O ~/Music/reminder.ogg
 
   _stow:backup_conflicts:
     silent: false
